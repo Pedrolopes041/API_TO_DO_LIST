@@ -1,12 +1,12 @@
 const { Schema, model } = require("mongoose");
 
-const TaskSchema = Schema({
+const TaskSchema = new Schema({
   description: {
-    Type: String,
+    type: String,
     required: true,
   },
   isCompleted: {
-    Type: String,
+    type: Boolean,
     default: false,
   },
 });
