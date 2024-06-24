@@ -75,13 +75,16 @@ class TaskController {
   async delete() {
     try {
       const taskId = this.req.params.id;
-      const deleteTask = await TaskModel.findByIdAndDelete(taskId);
 
-      if (!deleteTask) {
+      const taskToDelete = await TaskModel.findById(taskId);
+
+      if (!taskToDelete) {
         return notFoundError(this.res);
       }
 
-      this.res.status(200).send(deleteTask);
+      const deletedTask = await TaskModel.findByIdAndDelete(taskId);
+
+      this.res.status(200).send(deletedTask);
     } catch (error) {
       this.res.status(500).send(error.message);
     }

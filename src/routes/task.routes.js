@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  return new TaskRouter(req, res).delete;
+  return new TaskRouter(req, res).delete();
 });
 
 module.exports = router;
